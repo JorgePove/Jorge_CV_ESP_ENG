@@ -760,9 +760,11 @@
   .entry-controls {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin-top: 2px;
     opacity: 0;
     transition: opacity 0.2s;
+    gap: 4px;
   }
 
   .exp-entry:hover .entry-controls,
@@ -770,6 +772,33 @@
   .skill-item:hover .entry-controls,
   .contact-item:hover .entry-controls {
     opacity: 1;
+  }
+
+  /* ── Handle de arrastre ── */
+  .drag-handle {
+    cursor: grab;
+    color: var(--accent);
+    font-size: 13px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    line-height: 1;
+    user-select: none;
+    opacity: 0.7;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  .drag-handle:hover { opacity: 1; background: rgba(0,200,215,0.12); }
+  .drag-handle:active { cursor: grabbing; }
+
+  /* Entrada siendo arrastrada */
+  .dragging {
+    opacity: 0.4;
+    border: 1px dashed var(--accent);
+    border-radius: 4px;
+  }
+
+  /* Indicador de zona de destino */
+  .drag-over {
+    border-top: 2px solid var(--accent);
   }
 
   /* ─── PRINT ─── */
@@ -905,7 +934,7 @@
     <div id="exp-list">
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">04/2025 – actualidad</span>
@@ -917,7 +946,7 @@
       </div>
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">09/2020 – 04/2025</span>
@@ -931,7 +960,7 @@
       </div>
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">02/2020 – 09/2020</span>
@@ -943,7 +972,7 @@
       </div>
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Junior Level Designer</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">02/2019 – 09/2020</span>
@@ -955,7 +984,7 @@
       </div>
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Comercial PlayStation</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">11/2018 – 01/2020</span>
@@ -967,7 +996,7 @@
       </div>
 
       <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="exp-header">
           <span class="exp-title" contenteditable="true" spellcheck="false">Comercial Técnico De Realidad Virtual</span>
           <span class="exp-date" contenteditable="true" spellcheck="false">11/2017 – 11/2018</span>
@@ -985,7 +1014,7 @@
     <div id="edu-list">
 
       <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="edu-header">
           <div>
             <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Máster</strong>: <span contenteditable="true" spellcheck="false">Game Design</span></div>
@@ -996,7 +1025,7 @@
       </div>
 
       <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="edu-header">
           <div>
             <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Curso</strong>: <span contenteditable="true" spellcheck="false">Desarrollo de videojuegos en RV</span></div>
@@ -1007,7 +1036,7 @@
       </div>
 
       <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
+        <div class="entry-controls"><span class="drag-handle" title="Arrastrar para reordenar">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ Eliminar</button></div>
         <div class="edu-header">
           <div>
             <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Grado</strong>: <span contenteditable="true" spellcheck="false">Ingeniería De La Energía</span></div>
@@ -1042,259 +1071,106 @@
 </div><!-- /page-wrap -->
 
 <script>
-// ════════════════════════════════════════════════════
-// VERSIONES DEL CV — ES y EN como HTML estático
-// Ambas son editables. El botón solo muestra una u otra.
-// Para editar el texto base de cualquier versión,
-// modifica directamente los strings cvES o cvEN abajo.
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// VARIABLES DE ESTADO
+// ══════════════════════════════════════════════
+var currentLang   = 'es';
+var snapshotES    = null;
+var snapshotEN    = null;
+var sharedPhotoSrc= null;
+var dragSrc       = null;
+var isDark        = true;
 
-// ── Foto compartida entre versiones ──────────────────
-let sharedPhotoSrc = null;
-
+// ══════════════════════════════════════════════
+// FOTO
+// ══════════════════════════════════════════════
 document.getElementById('photo-input').addEventListener('change', function(e) {
-  const file = e.target.files[0];
+  var file = e.target.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
+  var reader = new FileReader();
+  reader.onload = function(ev) {
     sharedPhotoSrc = ev.target.result;
     document.getElementById('cv-photo').src = sharedPhotoSrc;
-    // Guardar en snapshot activo para que persista al cambiar de idioma
     saveSnapshot(currentLang);
   };
   reader.readAsDataURL(file);
 });
 
-// ── Snapshots: se inicializan al cargar la página ────
-let currentLang = 'es';
-let snapshotES  = null;
-let snapshotEN  = null;
+// ══════════════════════════════════════════════
+// TEMA CLARO / OSCURO
+// ══════════════════════════════════════════════
+function toggleTheme() {
+  isDark = !isDark;
+  document.documentElement.classList.toggle('light-mode', !isDark);
+  document.getElementById('btn-theme').textContent = isDark ? '🌙' : '☀️';
+}
 
-// Versión EN — texto traducido y adaptado al inglés profesional
-// EDITA ESTE TEXTO para modificar la versión inglesa base
-const cvEN_sidebar = `
-    <div class="sb-label">Contact</div>
-    <div class="contact-item">
-      <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-      <span class="contact-text" contenteditable="true" spellcheck="false">Madrid 28027</span>
-    </div>
-    <div class="contact-item">
-      <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      <span class="contact-text" contenteditable="true" spellcheck="false">+34 671 35 35 80</span>
-    </div>
-    <div class="contact-item">
-      <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      <span class="contact-text" contenteditable="true" spellcheck="false">jorge.pove77@gmail.com</span>
-    </div>
-    <button class="add-btn" style="margin: 4px 16px;" onclick="addContactItem()">+ Add contact</button>
-    <div class="sb-label">Skills</div>
-    <div id="skills-list">
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Level creation</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Multiple software proficiency</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Teamwork</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Fast learner</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Punctuality and accountability</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Customer service</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Communication</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Problem solving</span></div>
-      <div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Flexibility and adaptability</span></div>
-    </div>
-    <button class="add-btn" style="margin: 4px 16px;" onclick="addSkill()">+ Add skill</button>`;
+// ══════════════════════════════════════════════
+// DRAG & DROP
+// ══════════════════════════════════════════════
+function initDragOnEntry(entry) {
+  var handle = entry.querySelector('.drag-handle');
+  if (!handle) return;
+  handle.addEventListener('mousedown', function() { entry.setAttribute('draggable','true'); });
+  handle.addEventListener('mouseup',   function() { entry.setAttribute('draggable','false'); });
+  entry.addEventListener('dragstart', function(e) {
+    dragSrc = entry;
+    e.dataTransfer.effectAllowed = 'move';
+    setTimeout(function(){ entry.classList.add('dragging'); }, 0);
+  });
+  entry.addEventListener('dragend', function() {
+    entry.setAttribute('draggable','false');
+    entry.classList.remove('dragging');
+    document.querySelectorAll('.drag-over').forEach(function(el){ el.classList.remove('drag-over'); });
+    dragSrc = null;
+  });
+  entry.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    if (dragSrc && dragSrc !== entry && dragSrc.parentNode === entry.parentNode) {
+      entry.classList.add('drag-over');
+    }
+  });
+  entry.addEventListener('dragleave', function() { entry.classList.remove('drag-over'); });
+  entry.addEventListener('drop', function(e) {
+    e.preventDefault();
+    entry.classList.remove('drag-over');
+    if (!dragSrc || dragSrc === entry) return;
+    if (dragSrc.parentNode !== entry.parentNode) return;
+    var list    = entry.parentNode;
+    var items   = Array.prototype.slice.call(list.children);
+    var srcIdx  = items.indexOf(dragSrc);
+    var tgtIdx  = items.indexOf(entry);
+    if (srcIdx < tgtIdx) list.insertBefore(dragSrc, entry.nextSibling);
+    else                  list.insertBefore(dragSrc, entry);
+  });
+}
 
-const cvEN_summary = `A highly organised professional with extensive industry experience. Known for being a dedicated and hardworking individual who delivers excellent customer service and effective problem-solving. Seeking a new opportunity to further develop my career.`;
-
-const cvEN_main = `
-    <div class="section-title">Experience</div>
-    <div id="exp-list">
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">04/2025 – present</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">Bespoke Pixel – Madrid</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">Full level creation lifecycle from initial concept to final release, ensuring high-quality and immersive gameplay experiences aligned with the creative direction.</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">09/2020 – 04/2025</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">CIG – Manchester, United Kingdom</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">Leadership and mentoring: supervised, supported and mentored junior designers, fostering a safe and enriching work environment.</li>
-          <li contenteditable="true" spellcheck="false">Cross-department collaboration to ensure consistent, fluid and high-quality communication across the studio.</li>
-          <li contenteditable="true" spellcheck="false">Applied strong communication, teamwork and collaboration skills within multidisciplinary teams.</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">Level Designer</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">02/2020 – 09/2020</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">Genera Games – Seville</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">Designed and built over 500 levels for a mobile Match-3 game.</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">Junior Level Designer</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">02/2019 – 09/2020</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">Lost Criteria – Madrid</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">University project that was further developed and successfully launched to market.</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">PlayStation Sales Associate</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">11/2018 – 01/2020</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">Fnac – Madrid</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">Sales associate in the video games section at Fnac Callao, specialising in PlayStation products. Responsibilities included advising, guiding and processing purchases for customers across all types of video game products.</li>
-        </ul>
-      </div>
-
-      <div class="exp-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="exp-header">
-          <span class="exp-title" contenteditable="true" spellcheck="false">Virtual Reality Technical Sales Specialist</span>
-          <span class="exp-date" contenteditable="true" spellcheck="false">11/2017 – 11/2018</span>
-        </div>
-        <div class="exp-company" contenteditable="true" spellcheck="false">3WAYS – Madrid</div>
-        <ul class="exp-bullets">
-          <li contenteditable="true" spellcheck="false">Responsible for attracting, advising and delivering live Virtual Reality demonstrations to clients at medical conferences held across Spain.</li>
-        </ul>
-      </div>
-
-    </div>
-    <button class="add-btn" onclick="addExpEntry()">+ Add experience</button>
-
-    <div class="section-title">Education</div>
-    <div id="edu-list">
-
-      <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="edu-header">
-          <div>
-            <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Master's Degree</strong>: <span contenteditable="true" spellcheck="false">Game Design</span></div>
-            <div class="edu-school" contenteditable="true" spellcheck="false">U-tad University of Digital Arts – Madrid</div>
-          </div>
-          <span class="edu-date" contenteditable="true" spellcheck="false">09/2018 – 12/2019</span>
-        </div>
-      </div>
-
-      <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="edu-header">
-          <div>
-            <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Course</strong>: <span contenteditable="true" spellcheck="false">VR Video Game Development</span></div>
-            <div class="edu-school" contenteditable="true" spellcheck="false">Universidad Politécnica de Madrid – SAMSUNG</div>
-          </div>
-          <span class="edu-date" contenteditable="true" spellcheck="false">01/2018 – 07/2018</span>
-        </div>
-      </div>
-
-      <div class="edu-entry">
-        <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ Remove</button></div>
-        <div class="edu-header">
-          <div>
-            <div class="edu-degree"><strong contenteditable="true" spellcheck="false">Bachelor's Degree</strong>: <span contenteditable="true" spellcheck="false">Energy Engineering</span></div>
-            <div class="edu-school" contenteditable="true" spellcheck="false">Universidad Politécnica De Madrid – Madrid</div>
-          </div>
-          <span class="edu-date" contenteditable="true" spellcheck="false">09/2011 – 07/2017</span>
-        </div>
-      </div>
-
-    </div>
-    <button class="add-btn" onclick="addEduEntry()">+ Add education</button>
-
-    <div class="section-title">Languages</div>
-    <div class="lang-grid" id="lang-list">
-      <div class="lang-item">
-        <span class="lang-name" contenteditable="true" spellcheck="false">Spanish</span>
-        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
-        <span class="lang-level" contenteditable="true" spellcheck="false">Native</span>
-      </div>
-      <div class="lang-item">
-        <span class="lang-name" contenteditable="true" spellcheck="false">English</span>
-        <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
-        <span class="lang-level" contenteditable="true" spellcheck="false">C1 Advanced</span>
-      </div>
-    </div>
-    <button class="add-btn" onclick="addLang()">+ Add language</button>`;
-
-// ── Guarda el snapshot del idioma activo ─────────────
+// ══════════════════════════════════════════════
+// SNAPSHOTS ES / EN
+// ══════════════════════════════════════════════
 function saveSnapshot(lang) {
   if (lang === 'es') snapshotES = document.getElementById('cv').innerHTML;
   else               snapshotEN = document.getElementById('cv').innerHTML;
 }
 
-// ── Carga el snapshot del idioma indicado ─────────────
 function loadSnapshot(lang) {
-  document.getElementById('cv').innerHTML = lang === 'es' ? snapshotES : snapshotEN;
-  // Restaurar foto si existe
+  document.getElementById('cv').innerHTML = (lang === 'es') ? snapshotES : snapshotEN;
   if (sharedPhotoSrc) {
-    const img = document.getElementById('cv-photo');
+    var img = document.getElementById('cv-photo');
     if (img) img.src = sharedPhotoSrc;
   }
+  document.querySelectorAll('.exp-entry, .edu-entry').forEach(initDragOnEntry);
 }
 
-// ── Construye el snapshot EN a partir de los strings estáticos ──
-function buildENSnapshot() {
-  // Clonar la estructura del CV actual (ES) y reemplazar los contenidos
-  const cvEl = document.getElementById('cv');
-
-  // Reemplazar sidebar
-  const sidebar = cvEl.querySelector('#sidebar');
-  sidebar.innerHTML = cvEN_sidebar;
-
-  // Reemplazar resumen
-  const summary = cvEl.querySelector('.cv-summary');
-  summary.innerText = cvEN_summary;
-
-  // Reemplazar nombre del CV (nombre propio: no se traduce)
-  // Reemplazar main
-  const main = cvEl.querySelector('#main');
-  main.innerHTML = cvEN_main;
-
-  snapshotEN = cvEl.innerHTML;
-}
-
-// ── Inicialización: guarda snapshot ES y prepara EN ──
-window.addEventListener('DOMContentLoaded', () => {
-  snapshotES = document.getElementById('cv').innerHTML;
-  buildENSnapshot();
-  // Volver a mostrar ES por defecto
-  loadSnapshot('es');
-});
-
-// ════════════════════════════════════════════════════
-// TOGGLE ES / EN — instantáneo, sin API
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// TOGGLE ES / EN
+// ══════════════════════════════════════════════
 function toggleLanguage() {
-  // Guardar ediciones del usuario en el snapshot activo
   saveSnapshot(currentLang);
-  // Cambiar al otro idioma
-  currentLang = currentLang === 'es' ? 'en' : 'es';
+  currentLang = (currentLang === 'es') ? 'en' : 'es';
   loadSnapshot(currentLang);
-  // Actualizar botón
-  const flag  = document.getElementById('translate-flag');
-  const label = document.getElementById('translate-label');
+  var flag  = document.getElementById('translate-flag');
+  var label = document.getElementById('translate-label');
   if (currentLang === 'es') {
     flag.textContent  = '🇬🇧';
     label.textContent = 'Switch to English';
@@ -1304,119 +1180,206 @@ function toggleLanguage() {
   }
 }
 
-// ════════════════════════════════════════════════════
-// TEMA — toggle modo oscuro / claro
-// ════════════════════════════════════════════════════
-let isDark = true;
-function toggleTheme() {
-  isDark = !isDark;
-  document.documentElement.classList.toggle('light-mode', !isDark);
-  document.getElementById('btn-theme').textContent = isDark ? '🌙' : '☀️';
-}
-
-// ════════════════════════════════════════════════════
-// AÑADIR ENTRADAS
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// AÑADIR / ELIMINAR ENTRADAS
+// ══════════════════════════════════════════════
 function addExpEntry() {
-  const isEn = currentLang === 'en';
-  const div = document.createElement('div');
+  var isEn = (currentLang === 'en');
+  var div  = document.createElement('div');
   div.className = 'exp-entry';
-  div.innerHTML = `
-    <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ ${isEn ? 'Remove' : 'Eliminar'}</button></div>
-    <div class="exp-header">
-      <span class="exp-title" contenteditable="true" spellcheck="false">${isEn ? 'Job Title' : 'Puesto de trabajo'}</span>
-      <span class="exp-date" contenteditable="true" spellcheck="false">MM/YYYY – MM/YYYY</span>
-    </div>
-    <div class="exp-company" contenteditable="true" spellcheck="false">${isEn ? 'Company – City' : 'Empresa – Ciudad'}</div>
-    <ul class="exp-bullets">
-      <li contenteditable="true" spellcheck="false">${isEn ? 'Description of responsibilities and achievements.' : 'Descripción de responsabilidades y logros.'}</li>
-    </ul>`;
+  var handle = isEn ? 'Drag to reorder' : 'Arrastrar para reordenar';
+  var removeLabel = isEn ? 'Remove' : 'Eliminar';
+  var titleLabel  = isEn ? 'Job Title'    : 'Puesto de trabajo';
+  var compLabel   = isEn ? 'Company – City' : 'Empresa – Ciudad';
+  var descLabel   = isEn ? 'Description of responsibilities and achievements.' : 'Descripción de responsabilidades y logros.';
+  div.innerHTML =
+    '<div class="entry-controls">' +
+      '<span class="drag-handle" title="' + handle + '">⠿</span>' +
+      '<button class="remove-btn" onclick="removeEntry(this)">✕ ' + removeLabel + '</button>' +
+    '</div>' +
+    '<div class="exp-header">' +
+      '<span class="exp-title" contenteditable="true" spellcheck="false">' + titleLabel + '</span>' +
+      '<span class="exp-date" contenteditable="true" spellcheck="false">MM/YYYY – MM/YYYY</span>' +
+    '</div>' +
+    '<div class="exp-company" contenteditable="true" spellcheck="false">' + compLabel + '</div>' +
+    '<ul class="exp-bullets"><li contenteditable="true" spellcheck="false">' + descLabel + '</li></ul>';
   document.getElementById('exp-list').appendChild(div);
+  initDragOnEntry(div);
   div.querySelector('.exp-title').focus();
 }
 
 function addEduEntry() {
-  const isEn = currentLang === 'en';
-  const div = document.createElement('div');
+  var isEn = (currentLang === 'en');
+  var div  = document.createElement('div');
   div.className = 'edu-entry';
-  div.innerHTML = `
-    <div class="entry-controls"><button class="remove-btn" onclick="removeEntry(this)">✕ ${isEn ? 'Remove' : 'Eliminar'}</button></div>
-    <div class="edu-header">
-      <div>
-        <div class="edu-degree"><strong contenteditable="true" spellcheck="false">${isEn ? 'Degree' : 'Título'}</strong>: <span contenteditable="true" spellcheck="false">${isEn ? 'Degree name' : 'Nombre del título'}</span></div>
-        <div class="edu-school" contenteditable="true" spellcheck="false">${isEn ? 'Institution – City' : 'Institución – Ciudad'}</div>
-      </div>
-      <span class="edu-date" contenteditable="true" spellcheck="false">MM/YYYY – MM/YYYY</span>
-    </div>`;
+  var handle      = isEn ? 'Drag to reorder' : 'Arrastrar para reordenar';
+  var removeLabel = isEn ? 'Remove'        : 'Eliminar';
+  var degLabel    = isEn ? 'Degree'        : 'Título';
+  var degName     = isEn ? 'Degree name'   : 'Nombre del título';
+  var instLabel   = isEn ? 'Institution – City' : 'Institución – Ciudad';
+  div.innerHTML =
+    '<div class="entry-controls">' +
+      '<span class="drag-handle" title="' + handle + '">⠿</span>' +
+      '<button class="remove-btn" onclick="removeEntry(this)">✕ ' + removeLabel + '</button>' +
+    '</div>' +
+    '<div class="edu-header"><div>' +
+      '<div class="edu-degree"><strong contenteditable="true" spellcheck="false">' + degLabel + '</strong>: ' +
+        '<span contenteditable="true" spellcheck="false">' + degName + '</span></div>' +
+      '<div class="edu-school" contenteditable="true" spellcheck="false">' + instLabel + '</div>' +
+    '</div>' +
+    '<span class="edu-date" contenteditable="true" spellcheck="false">MM/YYYY – MM/YYYY</span></div>';
   document.getElementById('edu-list').appendChild(div);
+  initDragOnEntry(div);
   div.querySelector('strong').focus();
 }
 
 function addSkill() {
-  const isEn = currentLang === 'en';
-  const div = document.createElement('div');
+  var isEn = (currentLang === 'en');
+  var div  = document.createElement('div');
   div.className = 'skill-item';
-  div.innerHTML = `<div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">${isEn ? 'New skill' : 'Nueva competencia'}</span>`;
+  div.innerHTML = '<div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">' + (isEn ? 'New skill' : 'Nueva competencia') + '</span>';
   document.getElementById('skills-list').appendChild(div);
-  const span = div.querySelector('span');
+  var span = div.querySelector('span');
   span.focus();
-  const r = document.createRange();
+  var r = document.createRange();
   r.selectNodeContents(span);
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(r);
 }
 
 function addContactItem() {
-  const isEn = currentLang === 'en';
-  const div = document.createElement('div');
+  var isEn = (currentLang === 'en');
+  var div  = document.createElement('div');
   div.className = 'contact-item';
-  div.innerHTML = `
-    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" style="fill:var(--accent)"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-    <span class="contact-text" contenteditable="true" spellcheck="false">${isEn ? 'New contact detail' : 'Nuevo dato de contacto'}</span>`;
-  const addBtn = document.querySelector('#sidebar .add-btn');
+  div.innerHTML =
+    '<svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" style="fill:var(--accent)"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>' +
+    '<span class="contact-text" contenteditable="true" spellcheck="false">' + (isEn ? 'New contact detail' : 'Nuevo dato de contacto') + '</span>';
+  var addBtn = document.querySelector('#sidebar .add-btn');
   addBtn.parentNode.insertBefore(div, addBtn);
-  const span = div.querySelector('span');
+  var span = div.querySelector('span');
   span.focus();
-  const r = document.createRange();
+  var r = document.createRange();
   r.selectNodeContents(span);
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(r);
 }
 
 function addLang() {
-  const isEn = currentLang === 'en';
-  const div = document.createElement('div');
+  var isEn = (currentLang === 'en');
+  var div  = document.createElement('div');
   div.className = 'lang-item';
-  div.innerHTML = `
-    <span class="lang-name" contenteditable="true" spellcheck="false">${isEn ? 'Language' : 'Idioma'}</span>
-    <div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div>
-    <span class="lang-level" contenteditable="true" spellcheck="false">${isEn ? 'Level' : 'Nivel'}</span>`;
+  div.innerHTML =
+    '<span class="lang-name" contenteditable="true" spellcheck="false">' + (isEn ? 'Language' : 'Idioma') + '</span>' +
+    '<div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div>' +
+    '<span class="lang-level" contenteditable="true" spellcheck="false">' + (isEn ? 'Level' : 'Nivel') + '</span>';
   document.getElementById('lang-list').appendChild(div);
   div.querySelector('.lang-name').focus();
 }
 
-// ════════════════════════════════════════════════════
-// ELIMINAR ENTRADAS
-// ════════════════════════════════════════════════════
 function removeEntry(btn) {
-  const entry = btn.closest('.exp-entry, .edu-entry, .skill-item, .contact-item, .lang-item');
+  var entry = btn.closest('.exp-entry, .edu-entry, .skill-item, .contact-item, .lang-item');
   if (entry) entry.remove();
 }
 
-// ════════════════════════════════════════════════════
-// ENTER crea nuevo bullet en listas de experiencia
-// ════════════════════════════════════════════════════
+// Enter crea nuevo bullet
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && document.activeElement.closest('.exp-bullets li')) {
     e.preventDefault();
-    const li = document.activeElement;
-    const newLi = document.createElement('li');
+    var li    = document.activeElement;
+    var newLi = document.createElement('li');
     newLi.contentEditable = 'true';
-    newLi.spellcheck = false;
-    newLi.textContent = '';
+    newLi.spellcheck      = false;
+    newLi.textContent     = '';
     li.after(newLi);
     newLi.focus();
   }
+});
+
+// ══════════════════════════════════════════════
+// CONTENIDO EN INGLÉS (strings sin template literals)
+// ══════════════════════════════════════════════
+function buildENSnapshot() {
+  var cvEl   = document.getElementById('cv');
+  var handle = 'Drag to reorder';
+  var rm     = 'Remove';
+
+  // Sidebar EN
+  cvEl.querySelector('#sidebar').innerHTML =
+    '<div class="sb-label">Contact</div>' +
+    '<div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg><span class="contact-text" contenteditable="true" spellcheck="false">Madrid 28027</span></div>' +
+    '<div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span class="contact-text" contenteditable="true" spellcheck="false">+34 671 35 35 80</span></div>' +
+    '<div class="contact-item"><svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span class="contact-text" contenteditable="true" spellcheck="false">jorge.pove77@gmail.com</span></div>' +
+    '<button class="add-btn" style="margin:4px 16px" onclick="addContactItem()">+ Add contact</button>' +
+    '<div class="sb-label">Skills</div>' +
+    '<div id="skills-list">' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Level creation</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Multiple software proficiency</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Teamwork</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Fast learner</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Punctuality and accountability</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Customer service</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Communication</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Problem solving</span></div>' +
+      '<div class="skill-item"><div class="skill-bullet"></div><span class="skill-text" contenteditable="true" spellcheck="false">Flexibility and adaptability</span></div>' +
+    '</div>' +
+    '<button class="add-btn" style="margin:4px 16px" onclick="addSkill()">+ Add skill</button>';
+
+  // Summary EN
+  cvEl.querySelector('.cv-summary').innerText = 'A highly organised professional with extensive industry experience. Known for being a dedicated and hardworking individual who delivers excellent customer service and effective problem-solving. Seeking a new opportunity to further develop my career.';
+
+  // Main EN
+  function expEntry(title, date, company, bullets) {
+    var lis = bullets.map(function(b){ return '<li contenteditable="true" spellcheck="false">' + b + '</li>'; }).join('');
+    return '<div class="exp-entry">' +
+      '<div class="entry-controls"><span class="drag-handle" title="' + handle + '">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ ' + rm + '</button></div>' +
+      '<div class="exp-header"><span class="exp-title" contenteditable="true" spellcheck="false">' + title + '</span><span class="exp-date" contenteditable="true" spellcheck="false">' + date + '</span></div>' +
+      '<div class="exp-company" contenteditable="true" spellcheck="false">' + company + '</div>' +
+      '<ul class="exp-bullets">' + lis + '</ul></div>';
+  }
+  function eduEntry(degType, degName, school, date) {
+    return '<div class="edu-entry">' +
+      '<div class="entry-controls"><span class="drag-handle" title="' + handle + '">⠿</span><button class="remove-btn" onclick="removeEntry(this)">✕ ' + rm + '</button></div>' +
+      '<div class="edu-header"><div>' +
+        '<div class="edu-degree"><strong contenteditable="true" spellcheck="false">' + degType + '</strong>: <span contenteditable="true" spellcheck="false">' + degName + '</span></div>' +
+        '<div class="edu-school" contenteditable="true" spellcheck="false">' + school + '</div>' +
+      '</div><span class="edu-date" contenteditable="true" spellcheck="false">' + date + '</span></div></div>';
+  }
+
+  cvEl.querySelector('#main').innerHTML =
+    '<div class="section-title">Experience</div>' +
+    '<div id="exp-list">' +
+      expEntry('Level Designer', '04/2025 – present', 'Bespoke Pixel – Madrid', ['Full level creation lifecycle from initial concept to final release, ensuring high-quality and immersive gameplay experiences aligned with the creative direction.']) +
+      expEntry('Level Designer', '09/2020 – 04/2025', 'CIG – Manchester, United Kingdom', ['Leadership and mentoring: supervised, supported and mentored junior designers, fostering a safe and enriching work environment.', 'Cross-department collaboration to ensure consistent, fluid and high-quality communication across the studio.', 'Applied strong communication, teamwork and collaboration skills within multidisciplinary teams.']) +
+      expEntry('Level Designer', '02/2020 – 09/2020', 'Genera Games – Seville', ['Designed and built over 500 levels for a mobile Match-3 game.']) +
+      expEntry('Junior Level Designer', '02/2019 – 09/2020', 'Lost Criteria – Madrid', ['University project that was further developed and successfully launched to market.']) +
+      expEntry('PlayStation Sales Associate', '11/2018 – 01/2020', 'Fnac – Madrid', ['Sales associate in the video games section at Fnac Callao, specialising in PlayStation products. Responsibilities included advising, guiding and processing purchases for customers across all types of video game products.']) +
+      expEntry('Virtual Reality Technical Sales Specialist', '11/2017 – 11/2018', '3WAYS – Madrid', ['Responsible for attracting, advising and delivering live Virtual Reality demonstrations to clients at medical conferences held across Spain.']) +
+    '</div>' +
+    '<button class="add-btn" onclick="addExpEntry()">+ Add experience</button>' +
+    '<div class="section-title">Education</div>' +
+    '<div id="edu-list">' +
+      eduEntry('Master\'s Degree', 'Game Design', 'U-tad University of Digital Arts – Madrid', '09/2018 – 12/2019') +
+      eduEntry('Course', 'VR Video Game Development', 'Universidad Politécnica de Madrid – SAMSUNG', '01/2018 – 07/2018') +
+      eduEntry('Bachelor\'s Degree', 'Energy Engineering', 'Universidad Politécnica De Madrid – Madrid', '09/2011 – 07/2017') +
+    '</div>' +
+    '<button class="add-btn" onclick="addEduEntry()">+ Add education</button>' +
+    '<div class="section-title">Languages</div>' +
+    '<div class="lang-grid" id="lang-list">' +
+      '<div class="lang-item"><span class="lang-name" contenteditable="true" spellcheck="false">Spanish</span><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div><span class="lang-level" contenteditable="true" spellcheck="false">Native</span></div>' +
+      '<div class="lang-item"><span class="lang-name" contenteditable="true" spellcheck="false">English</span><div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div><span class="lang-level" contenteditable="true" spellcheck="false">C1 Advanced</span></div>' +
+    '</div>' +
+    '<button class="add-btn" onclick="addLang()">+ Add language</button>';
+
+  snapshotEN = cvEl.innerHTML;
+}
+
+// ══════════════════════════════════════════════
+// INICIALIZACIÓN
+// ══════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', function() {
+  snapshotES = document.getElementById('cv').innerHTML;
+  buildENSnapshot();
+  loadSnapshot('es');
 });
 </script>
 </body>
